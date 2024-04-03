@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Grade System</title>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".js"><br>
+    <button onclick="gradeCode()">Submit</button><br>
+    <div id="result"></div>
+
+    <script>
+        function gradeCode() {
+            var fileInput = document.getElementById("fileInput");
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "";
+
+            var file = fileInput.files[0];
+            if (!file) {
+                resultElement.innerHTML = "Please select a file.";
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var userCode = event.target.result;
+                try {
+                    var script = document.createElement('script');
+                    script.textContent = userCode;
+                    document.head.appendChild(script);
+
+                    // Define test cases
+                    var testCases = [
+                        { input: 5, expected: 25 },
+                        { input: 3, expected: 9 },
+                        { input: 8, expected: 64 }
+                        // Add more test cases as needed
+                    ];
+
+                    // Evaluate user's code against test cases
+                    testCases.forEach(function(testCase, index) {
+                        var output = square(testCase.input);
+                        if (output === testCase.expected) {
+                            resultElement.innerHTML += "Test case " + (index + 1) + ": Passed<br>";
+                        } else {
+                            resultElement.innerHTML += "Test case " + (index + 1) + ": Failed<br>";
+                        }
+                    });
+
+                    // Clean up
+                    document.head.removeChild(script);
+                } catch (error) {
+                    resultElement.innerHTML = "Error: " + error.message;
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
