@@ -1,0 +1,52 @@
+body {
+    background-color: white;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Reduce blur intensity */
+    margin: 0;
+    padding: 0;
+}
+
+.enter {
+    height: 40px;
+    width: 200px;
+    margin-top: 20px;
+    background-color: rgb(43, 16, 30);
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Add box-shadow transition */
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add initial shadow */
+}
+
+.enter:hover {
+    background-color: rgb(114, 70, 92);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+}
+
+.enter:active {
+    transform: scale(0.95);
+}
+
+.img1 {
+    height: auto;
+    width: auto;
+    border-radius: 10%;
+    animation: flip 8s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the picture */
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+

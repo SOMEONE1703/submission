@@ -86,11 +86,25 @@ function test(test_id,id){
 }
 
 app.get('/',(request,response)=>{
-    const filePath = path.join(__dirname, 'submit.html');
+    const filePath = path.join(__dirname, 'index.html');
+    response.sendFile(filePath);
+});
+
+app.get('/submit',(request,response)=>{
+    const filePath = path.join(__dirname, 'homepage.html');
+    response.sendFile(filePath);
+});
+
+app.get('/login',(request,response)=>{
+    const filePath = path.join(__dirname, 'login.html');
     response.sendFile(filePath);
 });
 
 
+app.get('/register',(request,response)=>{
+    const filePath = path.join(__dirname, 'register.html');
+    response.sendFile(filePath);
+});
 
 app.post("/submit/:id",upload.single('file'),(request,response)=>{
     if (!request.file){

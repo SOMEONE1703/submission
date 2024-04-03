@@ -38,6 +38,7 @@ function send_file(){
 }
 
 function getRes(){
+    console.log("called");
     let url="http://localhost:3002/results"
     fetch(url,{
         method:'POST',
@@ -59,12 +60,34 @@ function getRes(){
     })
     .then(data=>{
         console.log(data);
+        const where=document.getElementById("result");
+        if (data.score==2){
+        for (let i=0;i<data.tests.length;i++){
+            console.log("weird");
+            var testcaseResult=document.createElement("p");
+            testcaseResult.textContent=`Test Case ${i+1} :   `;
+            if (data.tests[i]=="Passed"){
+                testcaseResult.textContent+="Passed";
+                testcaseResult.style.color="Green";
+            }
+            else{
+                testcaseResult.textContent+="Failed";
+                testcaseResult.style.color="Red";
+            }
+            where.appendChild(testcaseResult);
+        }
+        const butt=document.getElementById("submit");
+        butt.onclick=sendFile;
+        butt.textContent="Re-Submit";
+        }
         
     })
     .catch(error=>console.error('ERROR',error))
 }
 
 function sendFile() {
+    var temp=document.getElementById("result");
+    temp.replaceChildren();
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
     if (!file) {
@@ -84,12 +107,16 @@ function sendFile() {
         console.log("squeeze:");
         console.log(data);
         console.log(":theorem");
+        const butt=document.getElementById("submit");
+        butt.onclick=getRes;
+        butt.textContent="Get Results";
         //document.getElementById('response').innerText = data;
     })
     .catch(error => {
         console.error('Error:', error);
         document.getElementById('response').innerText = 'An error occurred';
     });
+    
 }
 
  

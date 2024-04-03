@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission Page</title>
     <link rel="stylesheet" href="homepage.css">
-    
+    <script src="submit.js"></script>
 </head>
 <body>
     <h1>Submission Page</h1>
     <form class="submit-form" id="submissionForm">
         <section>
             <input type="file" id="fileInput" class="file-label">
-            <button type="button" onclick="submitCode()" class="submit">Submit</button>
+            <button type="button" onclick="sendFile()" id="submit">Submit</button>
             <section id="result" class="test-results"></section>
         </section>
     

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="logincss.css">
+</head>
+<body>
+  <header >
+    <h1>knockando hackathon</h1>
+  </header>
+   <main>
+    <section class="box">
+        <img src="wolf4.jpg" alt="pic" class="img1">
+        <section class="button1">
+            <button 
+            onclick="switch_login()"
+            class="enter">enter hackathon</button>
+        </section>
+        
+    </section>
+   </main>
+   <script>
+        function switch_login() {
+        let url="http://localhost:3002/login";
+        fetch(url,{
+            method:'GET'
+            }).then(res=>{
+            if (res.ok){
+                console.log("worked");
+                return res.text();
+            }
+            else{
+                console.log("did not work");
+            }
+        })
+        .then(html=>{
+            // Open a new document
+            document.open();
+            // Write the received HTML content to the document
+            document.write(html);
+            // Close the document
+            document.close();
+        })
+        .catch(error=>console.error('ERROR',error))
+        }
+   </script>
+</body>
+</html>
