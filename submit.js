@@ -9,7 +9,7 @@ function send_file(){
         return;
     }
     //now we post file
-    let url="http://localhost:3002"
+    let url="http://localhost:3005"
     fetch(url,{
         method:'POST',
         headers:{
@@ -39,7 +39,7 @@ function send_file(){
 
 function getRes(){
     console.log("called");
-    let url="http://localhost:3002/results"
+    let url="http://localhost:3005/results"
     fetch(url,{
         method:'POST',
         headers:{
@@ -97,7 +97,7 @@ function sendFile() {
 
     const formData = new FormData();
     formData.append('file', file);
-    let url="http://localhost:3002/submit/1"
+    let url="http://localhost:3005/submit/1"
     fetch(url, {
         method: 'POST',
         body: formData

@@ -37,7 +37,7 @@
     window.location.href = url
    }
    function switch_submit() {
-        let url="http://localhost:3002/submit";
+        let url="http://localhost:3005/submit";
         fetch(url,{
             method:'GET'
             }).then(res=>{
@@ -60,7 +60,7 @@
         .catch(error=>console.error('ERROR',error))
         }
    function switch_register() {
-        let url="http://localhost:3002/register";
+        let url="http://localhost:3005/register";
         fetch(url,{
             method:'GET'
             }).then(res=>{
