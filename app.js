@@ -86,7 +86,7 @@ function test(test_id,id){
 }
 
 app.get('/',(request,response)=>{
-    const filePath = path.join(__dirname, 'index.html');
+    const filePath = path.join(__dirname, 'submit.html');
     response.sendFile(filePath);
 });
 
