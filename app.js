@@ -95,7 +95,7 @@ app.get('/submit',(request,response)=>{
     response.sendFile(filePath);
 });
 
-app.use('/login',(request,response)=>{
+app.get('/login',(request,response)=>{
     const filePath = path.join(__dirname, 'login.html');
     response.sendFile(filePath);
 });
