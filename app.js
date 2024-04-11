@@ -97,7 +97,8 @@ app.get('/submit',(request,response)=>{
 
 app.get('/login',(request,response)=>{
     const filePath = path.join(__dirname, 'login.html');
-    response.sendFile(filePath);
+    // response.sendFile(filePath);
+    response.status(200).send({message:"what the fuck"});
 });
 
 
