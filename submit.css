@@ -1,0 +1,11 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#main_title{
+    align-self: center;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="login-form" >
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button  
+        onclick="switch_submit()"
+        type="submit">Login</button>
+        <section class="flex">
+            <label for="forgetpass"></label>
+            <input type="checkbox" name="forgetpass" id="forgetpass">
+            <p>Remember <u 
+                onclick="switch_register()"
+
+                class="colour1">Forgot password</u></p>
+        </section>
+       
+        <p>Not a knockandian yet? <u 
+            onclick="switch_register()"
+            class="colour">Register</u> Register</p>
+
+    </form>
+    <script>
+   function navigate(url){
+    window.location.href = url
+   }
+   function switch_submit() {
+        let url="http://localhost:3005/submit";
+        fetch(url,{
+            method:'GET'
+            }).then(res=>{
+            if (res.ok){
+                console.log("worked");
+                return res.text();
+            }
+            else{
+                console.log("did not work");
+            }
+        })
+        .then(html=>{
+            // Open a new document
+            document.open();
+            // Write the received HTML content to the document
+            document.write(html);
+            // Close the document
+            document.close();
+        })
+        .catch(error=>console.error('ERROR',error))
+        }
+   function switch_register() {
+        let url="http://localhost:3005/register";
+        fetch(url,{
+            method:'GET'
+            }).then(res=>{
+            if (res.ok){
+                console.log("worked");
+                return res.text();
+            }
+            else{
+                console.log("did not work");
+            }
+        })
+        .then(html=>{
+            // Open a new document
+            document.open();
+            // Write the received HTML content to the document
+            document.write(html);
+            // Close the document
+            document.close();
+        })
+        .catch(error=>console.error('ERROR',error))
+        }
+    </script>
+
+
+</body>
+</html>
